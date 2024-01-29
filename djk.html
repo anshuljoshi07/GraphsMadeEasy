@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="display: flex;">
+    <div id="code" style="width: 50%;"   data-pym-src="https://www.jdoodle.com/embed/v0/79XC"></div>
+
+
+    <div>  <pre style="display: block; overflow-x: auto; padding: 0.5em; color: rgb(171, 178, 191); background: rgb(40, 44, 52);"><code class="language-scala" style="white-space: pre;"><span class="hljs-class" style="color: rgb(249, 38, 114);">object</span><span class="hljs-class"> </span><span class="hljs-class" style="color: rgb(97, 174, 238);">CallByNameExample</span><span class="hljs-class"> </span><span>{
+    </span><span>  </span><span style="color: rgb(249, 38, 114);">def</span><span style="color: rgb(97, 174, 238);"> </span><span style="color: rgb(97, 174, 238);">main</span><span>(args: </span><span style="color: rgb(209, 154, 102);">Array</span><span>[</span><span style="color: rgb(209, 154, 102);">String</span><span>]): </span><span style="color: rgb(209, 154, 102);">Unit</span><span> = {
+    </span><span>    printTimestamp(getTimestamp()) </span><span style="color: rgb(177, 142, 177); font-style: italic;">// The getTimestamp() expression is not evaluated yet</span><span>
+    </span>  }
+    
+    <span>  </span><span style="color: rgb(177, 142, 177); font-style: italic;">// Call-by-name function</span><span>
+    </span><span>  </span><span style="color: rgb(249, 38, 114);">def</span><span style="color: rgb(97, 174, 238);"> </span><span style="color: rgb(97, 174, 238);">printTimestamp</span><span>(timestamp: =&gt; </span><span style="color: rgb(209, 154, 102);">Long</span><span>): </span><span style="color: rgb(209, 154, 102);">Unit</span><span> = {
+    </span><span>    println(</span><span style="color: rgb(152, 195, 121);">"Inside printTimestamp function"</span><span>)
+    </span><span>    println(</span><span style="color: rgb(152, 195, 121);">"Current timestamp: "</span><span> + timestamp) </span><span style="color: rgb(177, 142, 177); font-style: italic;">// The 'timestamp' expression is evaluated here</span><span>
+    </span>  }
+    
+    <span>  </span><span style="color: rgb(249, 38, 114);">def</span><span style="color: rgb(97, 174, 238);"> </span><span style="color: rgb(97, 174, 238);">getTimestamp</span><span>(): </span><span style="color: rgb(209, 154, 102);">Long</span><span> = {
+    </span><span>    println(</span><span style="color: rgb(152, 195, 121);">"Getting current timestamp"</span><span>)
+    </span><span>    </span><span style="color: rgb(209, 154, 102);">System</span><span>.currentTimeMillis()
+    </span>  }
+    }
+    </code></pre>
+  </div>    
+
+    </div>
+
+    <script src="https://www.jdoodle.com/assets/jdoodle-pym.min.js" type="text/javascript"></script>
+</body>
+</html>
