@@ -6,6 +6,9 @@
     <title>Document</title>
 </head>
 <body>
+  <!-- visibility: hidden; -->
+    <div id="cloud1" style="position: absolute; margin-top: 320px; visibility: hidden; ">I'm the cloud</div>
+
     <div style="display: flex;">
     <div id="code" style="width: 50%;"   data-pym-src="https://www.jdoodle.com/embed/v0/79XC"></div>
 
@@ -27,10 +30,95 @@
     </span>  }
     }
     </code></pre>
+
+    <pre>
+      <code id="c1">
+        hello
+      </code>
+
+      <code id="c2">
+        world
+      </code>
+      
+      <code>
+        void DijkstrasShortestPath (int source_node, int node_count, VVPII& graph) {
+
+          // Assume that the distance from source_node to other nodes is infinite 
+          // in the beginnging, i.e initialize the distance vector to a max value
+          const long long INF = 999999999999;
+          vector<unsigned long long>dist(node_count, INF);
+          set<PII> set_length_node;
+          
+          // Distance from starting vertex to itself is 0
+          dist[source_node] = 0;
+          set_length_node.insert(PII(0,source_node));
+      
+          while (!set_length_node.empty()) {
+      
+              PII top = *set_length_node.begin();
+              set_length_node.erase(set_length_node.begin());
+      
+              int current_source_node = top.second;
+      
+              for (auto& it : graph[current_source_node]) {
+      
+                  int adj_node = it.first;
+                  int length_to_adjnode = it.second;
+          
+                  // Edge relaxation 
+                  if (dist[adj_node] > length_to_adjnode + dist[current_source_node]) {
+          
+                      // If the distance to the adjacent node is not INF, means the pair <dist, node> is in the set
+                      // Remove the pair before updating it in the set.
+                      if (dist[adj_node] != INF) {
+                         set_length_node.erase(set_length_node.find(PII(dist[adj_node],adj_node))); 
+                      }
+                      dist[adj_node] = length_to_adjnode + dist[current_source_node];
+                      set_length_node.insert(PII(dist[adj_node], adj_node));
+                  }
+              }
+          }   
+      
+          for (int i=0; i<node_count; i++)
+              cout << "Source Node(" << source_node << ") -> Destination Node(" << i << ") : " << dist[i] << endl;
+      }
+      </code>
+    </pre>
+
+
+
+
+
+
   </div>    
 
     </div>
 
     <script src="https://www.jdoodle.com/assets/jdoodle-pym.min.js" type="text/javascript"></script>
+    <script>
+   
+      let c1 = document.querySelector("#c1");
+      c1.addEventListener("click", c1f);
+      let c2 = document.querySelector("#c2");
+      c2.addEventListener("click", c1f);
+     
+      function c1f (e){
+     let height = e.target.getBoundingClientRect().top +  window.scrollY;
+
+     let cloud1 = document.getElementById("cloud1");
+     cloud1.style.color = 'red';
+     cloud1.style.visibility="visible";
+    }
+
+   
+    
+    // cloud1.addEventListener("mouseout", LogoHoverRemove);
+
+    // "visibility":"visible"
+
+    // //  cloud1.style.visibility=visible;
+    //   }
+
+    </script>
 </body>
 </html>
